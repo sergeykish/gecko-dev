@@ -760,10 +760,10 @@ nsCSSRendering::PaintOutline(nsPresContext* aPresContext,
                                outlineColor };
 
   // convert the border widths
-  gfxFloat outlineWidths[4] = { width / twipsPerPixel,
-                                width / twipsPerPixel,
-                                width / twipsPerPixel,
-                                width / twipsPerPixel };
+  gfxFloat outlineWidths[4] = { gfxFloat(width / twipsPerPixel),
+                                gfxFloat(width / twipsPerPixel),
+                                gfxFloat(width / twipsPerPixel),
+                                gfxFloat(width / twipsPerPixel) };
 
   // start drawing
   gfxContext *ctx = aRenderingContext.ThebesContext();
