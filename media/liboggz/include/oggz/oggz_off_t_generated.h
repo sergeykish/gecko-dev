@@ -62,7 +62,7 @@
 #ifdef __APPLE__
 typedef off_t oggz_off_t;
 #else
-typedef loff_t oggz_off_t;
+typedef off_t oggz_off_t;
 #endif
 
 #define PRI_OGGZ_OFF_T "PRId64"
