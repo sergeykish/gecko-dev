@@ -40,7 +40,7 @@ var UpdatePing = {
       false
     );
 
-    this._log.trace("init - enabled: " + this._enabled);
+    this._log.trace(`init - enabled: ${this._enabled}`);
 
     if (!this._enabled) {
       return;

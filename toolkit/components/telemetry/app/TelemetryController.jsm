@@ -706,10 +706,8 @@ var Impl = {
     }
 
     this._log.config(
-      "enableTelemetryRecording - canRecordBase:" +
-        Telemetry.canRecordBase +
-        ", canRecordExtended: " +
-        Telemetry.canRecordExtended
+      `enableTelemetryRecording - canRecordBase:${Telemetry.canRecordBase}` +
+        `, canRecordExtended: ${Telemetry.canRecordExtended}`
     );
 
     return Telemetry.canRecordBase;

@@ -5232,7 +5232,7 @@
       // We want panel IDs to be globally unique, that's why we include the
       // window ID. We switched to a monotonic counter as Date.now() lead
       // to random failures because of colliding IDs.
-      return "panel-" + outerID + "-" + ++this._uniquePanelIDCounter;
+      return `panel-${outerID}-${++this._uniquePanelIDCounter}`;
     },
 
     destroy() {

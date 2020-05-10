@@ -1292,7 +1292,7 @@ EnvironmentCache.prototype = {
    * Start watching the preferences.
    */
   _startWatchingPrefs() {
-    this._log.trace("_startWatchingPrefs - " + this._watchedPrefs);
+    this._log.trace(`_startWatchingPrefs - ${this._watchedPrefs}`);
 
     Services.prefs.addObserver("", this, true);
   },
@@ -1347,7 +1347,7 @@ EnvironmentCache.prototype = {
   },
 
   observe(aSubject, aTopic, aData) {
-    this._log.trace("observe - aTopic: " + aTopic + ", aData: " + aData);
+    this._log.trace(`observe - aTopic: ${aTopic}, aData: ${aData}`);
     switch (aTopic) {
       case SEARCH_ENGINE_MODIFIED_TOPIC:
         if (aData != "engine-default" && aData != "engine-default-private") {
@@ -1421,7 +1421,7 @@ EnvironmentCache.prototype = {
     }
 
     this._log.trace(
-      "_updateSearchEngine - isInitialized: " + Services.search.isInitialized
+      `_updateSearchEngine - isInitialized: ${Services.search.isInitialized}`
     );
     if (!Services.search.isInitialized) {
       return;

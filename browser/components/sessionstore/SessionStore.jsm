@@ -1604,7 +1604,7 @@ var SessionStoreInternal = {
    *         A unique string to identify a window
    */
   _generateWindowID: function ssi_generateWindowID() {
-    return "window" + this._nextWindowID++;
+    return `window${this._nextWindowID++}`;
   },
 
   /**
@@ -5284,7 +5284,7 @@ var SessionStoreInternal = {
       WINDOW_RESTORE_ZINDICES.set(window, state.windows[0].zIndex);
     }
     do {
-      var ID = "window" + Math.random();
+      var ID = `window${Math.random()}`;
     } while (ID in this._statesToRestore);
     WINDOW_RESTORE_IDS.set(window, ID);
     this._statesToRestore[ID] = state;

@@ -580,12 +580,9 @@ class BasicFormatter {
 
   format(message) {
     return (
-      message.time +
-      "\t" +
-      message.loggerName +
-      "\t" +
-      message.levelDesc +
-      "\t" +
+      `${message.time}\t` +
+      `${message.loggerName}\t` +
+      `${message.levelDesc}\t` +
       this.formatText(message)
     );
   }

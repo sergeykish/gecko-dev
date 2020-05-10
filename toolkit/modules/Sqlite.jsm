@@ -103,7 +103,7 @@ function logScriptError(message) {
 function getIdentifierByFileName(fileName) {
   let number = connectionCounters.get(fileName) || 0;
   connectionCounters.set(fileName, number + 1);
-  return fileName + "#" + number;
+  return `${fileName}#${number}`;
 }
 
 /**
@@ -825,14 +825,14 @@ ConnectionData.prototype = Object.freeze({
     // Don't incur overhead for serializing params unless the messages go
     // somewhere.
     if (this._log.level <= Log.Level.Trace) {
-      let msg = "Stmt #" + index + " " + sql;
+      let msg = `Stmt #${index} ${sql}`;
 
       if (params) {
         msg += " - " + JSON.stringify(params);
       }
       this._log.trace(msg);
     } else {
-      this._log.debug("Stmt #" + index + " starting");
+      this._log.debug(`Stmt #${index} starting`);
     }
 
     let self = this;
@@ -871,7 +871,7 @@ ConnectionData.prototype = Object.freeze({
       },
 
       handleCompletion(reason) {
-        self._log.debug("Stmt #" + index + " finished.");
+        self._log.debug(`Stmt #${index} finished.`);
         self._pendingStatements.delete(index);
 
         switch (reason) {

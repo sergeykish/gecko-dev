@@ -47,8 +47,7 @@ function _updateCurrentContentOuterWindowID(browser) {
   debug(
     "Current window uri=" +
       (browser.currentURI && browser.currentURI.spec) +
-      " id=" +
-      browser.outerWindowID
+      ` id=${browser.outerWindowID}`
   );
 
   _lastTopLevelWindowID = browser.outerWindowID;

@@ -462,7 +462,7 @@
     baseConnect() {
       this._tabbox = null;
       this.ACTIVE_DESCENDANT_ID =
-        "keyboard-focused-tab-" + Math.trunc(Math.random() * 1000000);
+        `keyboard-focused-tab-${Math.trunc(Math.random() * 1000000)}`;
 
       if (!this.hasAttribute("orient")) {
         this.setAttribute("orient", "horizontal");

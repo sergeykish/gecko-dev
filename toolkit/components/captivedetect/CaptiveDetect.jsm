@@ -259,10 +259,8 @@ function CaptivePortalDetector() {
       this._canonicalSiteURL +
       ",content=" +
       this._canonicalSiteExpectedContent +
-      ",time=" +
-      this._maxWaitingTime +
-      "max-retry=" +
-      this._maxRetryCount +
+      `,time=${this._maxWaitingTime}` +
+      `max-retry=${this._maxRetryCount}` +
       "}"
   );
 
@@ -354,10 +352,8 @@ CaptivePortalDetector.prototype = {
     debug(
       "startDetection {site=" +
         this._canonicalSiteURL +
-        ",content=" +
-        this._canonicalSiteExpectedContent +
-        ",time=" +
-        this._maxWaitingTime +
+        `,content=${this._canonicalSiteExpectedContent}` +
+        `,time=${this._maxWaitingTime}` +
         "}"
     );
     let self = this;

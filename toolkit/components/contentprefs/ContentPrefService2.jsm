@@ -144,7 +144,7 @@ ContentPrefService2.prototype = {
       try {
         conn = await this._getConnection();
       } catch (e) {
-        this.log("Failed to establish database connection: " + e);
+        this.log(`Failed to establish database connection: ${e}`);
         throw e;
       }
       return conn;
@@ -1245,7 +1245,7 @@ ContentPrefService2.prototype = {
 
   _dbMaybeInit: async function CPS2__dbMaybeInit(aConn) {
     let version = parseInt(await aConn.getSchemaVersion(), 10);
-    this.log("Schema version: " + version);
+    this.log(`Schema version: ${version}`);
 
     if (version == 0) {
       await this._dbCreateSchema(aConn);

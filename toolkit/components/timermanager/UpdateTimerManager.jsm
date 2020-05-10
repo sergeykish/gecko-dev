@@ -220,10 +220,7 @@ TimerManager.prototype = {
             LOG("TimerManager:notify - notified " + cid);
           } catch (e) {
             LOG(
-              "TimerManager:notify - error notifying component id: " +
-                cid +
-                " ,error: " +
-                e
+              `TimerManager:notify - error notifying component id: ${cid} ,error: ${e}`
             );
           }
           lastUpdateTime = now;

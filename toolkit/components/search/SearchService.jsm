@@ -766,7 +766,7 @@ SearchService.prototype = {
     } catch (ex) {
       this._initRV = ex.result !== undefined ? ex.result : Cr.NS_ERROR_FAILURE;
       SearchUtils.log(
-        "_init: failure initializing search: " + ex + "\n" + ex.stack
+        `_init: failure initializing search: ${ex}\n${ex.stack}`
       );
     }
     gInitialized = true;
@@ -1225,8 +1225,7 @@ SearchService.prototype = {
       }
     }
     SearchUtils.log(
-      "_loadEngines: loading " +
-        this._startupExtensions.size +
+      `_loadEngines: loading ${this._startupExtensions.size}` +
         " engines reported by AddonManager startup"
     );
     for (let extension of this._startupExtensions) {
@@ -1782,9 +1781,7 @@ SearchService.prototype = {
     }
 
     SearchUtils.log(
-      "_loadEnginesFromCache: Loading " +
-        cache.engines.length +
-        " engines from cache"
+      `_loadEnginesFromCache: Loading ${cache.engines.length} engines from cache`
     );
 
     let skippedEngines = 0;
@@ -1799,9 +1796,7 @@ SearchService.prototype = {
 
     if (skippedEngines) {
       SearchUtils.log(
-        "_loadEnginesFromCache: skipped " +
-          skippedEngines +
-          " built-in engines."
+        `_loadEnginesFromCache: skipped ${skippedEngines} built-in engines.`
       );
     }
   },
@@ -2366,7 +2361,7 @@ SearchService.prototype = {
 
   // nsISearchService
   async init(awaitRegionCheck = false) {
-    SearchUtils.log("SearchService.init: " + awaitRegionCheck);
+    SearchUtils.log(`SearchService.init: ${awaitRegionCheck}`);
     if (this._initStarted) {
       if (awaitRegionCheck) {
         await this._ensureKnownRegionPromise;

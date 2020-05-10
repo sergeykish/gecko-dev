@@ -449,11 +449,7 @@ SanityTest.prototype = {
       null,
       "chrome://gfxsanity/content/sanityparent.html",
       "Test Page",
-      "width=" +
-        PAGE_WIDTH +
-        ",height=" +
-        PAGE_HEIGHT +
-        ",chrome,titlebar=0,scrollbars=0,popup=1",
+      `width=${PAGE_WIDTH},height=${PAGE_HEIGHT},chrome,titlebar=0,scrollbars=0,popup=1`,
       null
     );
 

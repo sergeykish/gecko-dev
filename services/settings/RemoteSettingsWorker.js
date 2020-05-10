@@ -49,7 +49,7 @@ const Agent = {
       }
     }
     const toSerialize = {
-      last_modified: "" + timestamp,
+      last_modified: `${timestamp}`,
       data: allRecords,
     };
     return CanonicalJSON.stringify(toSerialize, jsesc);
@@ -123,7 +123,7 @@ self.onmessage = event => {
     })
     .catch(error => {
       console.log(`RemoteSettingsWorker error: ${error}`);
-      self.postMessage({ callbackId, error: "" + error });
+      self.postMessage({ callbackId, error: `${error}` });
     });
 };
 

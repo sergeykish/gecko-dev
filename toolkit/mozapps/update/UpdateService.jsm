@@ -996,7 +996,7 @@ function isServiceInstalled() {
     wrk.close();
   } catch (e) {}
   installed = installed == 1; // convert to bool
-  LOG("isServiceInstalled - returning " + installed);
+  LOG(`isServiceInstalled - returning ${installed}`);
   return installed;
 }
 
@@ -3893,7 +3893,7 @@ Checker.prototype = {
    * See nsIUpdateService.idl
    */
   checkForUpdates: function UC_checkForUpdates(listener, force) {
-    LOG("Checker: checkForUpdates, force: " + force);
+    LOG(`Checker: checkForUpdates, force: ${force}`);
     gUpdateFileWriteInfo = { phase: "check", failure: false };
     if (!listener) {
       throw Cr.NS_ERROR_NULL_POINTER;

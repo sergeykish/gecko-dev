@@ -325,7 +325,7 @@ PROT_ListManager.prototype.kickoffUpdate_ = function() {
         );
         log("Next update at " + nextUpdate);
       }
-      log("Next update " + Math.round(updateDelay / 60000) + "min from now");
+      log(`Next update ${Math.round(updateDelay / 60000)}min from now`);
 
       this.setUpdateCheckTimer(updateUrl, updateDelay);
     } else {
@@ -675,7 +675,7 @@ PROT_ListManager.prototype.updateSuccess_ = function(
     );
     delay = this.updateInterval;
   } else {
-    log("Waiting " + Math.round(delay / 60000) + "min");
+    log(`Waiting ${Math.round(delay / 60000)}min`);
   }
 
   this.setUpdateCheckTimer(updateUrl, delay);
@@ -705,20 +705,15 @@ PROT_ListManager.prototype.updateSuccess_ = function(
   let lastUpdatePref =
     "browser.safebrowsing.provider." + provider + ".lastupdatetime";
   let now = Date.now();
-  log("Setting last update of " + provider + " to " + now);
+  log(`Setting last update of ${provider} to ${now}`);
   Services.prefs.setCharPref(lastUpdatePref, now.toString());
 
   let nextUpdatePref =
     "browser.safebrowsing.provider." + provider + ".nextupdatetime";
   let targetTime = now + delay;
   log(
-    "Setting next update of " +
-      provider +
-      " to " +
-      targetTime +
-      " (" +
-      Math.round(delay / 60000) +
-      "min from now)"
+    `Setting next update of ${provider} to ` +
+      `${targetTime} (${Math.round(delay / 60000)}min from now)`
   );
   Services.prefs.setCharPref(nextUpdatePref, targetTime.toString());
 

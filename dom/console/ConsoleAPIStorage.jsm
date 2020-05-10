@@ -54,7 +54,7 @@ ConsoleAPIStorageService.prototype = {
       Services.obs.removeObserver(this, "memory-pressure");
     } else if (aTopic == "inner-window-destroyed") {
       let innerWindowID = aSubject.QueryInterface(Ci.nsISupportsPRUint64).data;
-      this.clearEvents(innerWindowID + "");
+      this.clearEvents(`${innerWindowID}`);
     } else if (aTopic == "memory-pressure") {
       this.clearEvents();
     }
