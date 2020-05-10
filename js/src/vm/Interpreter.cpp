@@ -1422,38 +1422,11 @@ static MOZ_ALWAYS_INLINE bool AddOperation(JSContext* cx,
     }
   }
 
-  if (!ToPrimitive(cx, lhs)) {
-    return false;
-  }
-  if (!ToPrimitive(cx, rhs)) {
-    return false;
-  }
-
   bool lIsString = lhs.isString();
   bool rIsString = rhs.isString();
-  if (lIsString || rIsString) {
-    JSString* lstr;
-    if (lIsString) {
-      lstr = lhs.toString();
-    } else {
-      lstr = ToString<CanGC>(cx, lhs);
-      if (!lstr) {
-        return false;
-      }
-    }
-
-    JSString* rstr;
-    if (rIsString) {
-      rstr = rhs.toString();
-    } else {
-      // Save/restore lstr in case of GC activity under ToString.
-      lhs.setString(lstr);
-      rstr = ToString<CanGC>(cx, rhs);
-      if (!rstr) {
-        return false;
-      }
-      lstr = lhs.toString();
-    }
+  if (lIsString && rIsString) {
+    JSString* lstr = lhs.toString();
+    JSString* rstr = rhs.toString();
     JSString* str = ConcatStrings<NoGC>(cx, lstr, rstr);
     if (!str) {
       RootedString nlstr(cx, lstr), nrstr(cx, rstr);
@@ -1466,16 +1439,18 @@ static MOZ_ALWAYS_INLINE bool AddOperation(JSContext* cx,
     return true;
   }
 
-  if (!ToNumeric(cx, lhs) || !ToNumeric(cx, rhs)) {
-    return false;
-  }
-
   if (lhs.isBigInt() || rhs.isBigInt()) {
     return BigInt::addValue(cx, lhs, rhs, res);
   }
 
-  res.setNumber(lhs.toNumber() + rhs.toNumber());
-  return true;
+  if (lhs.isNumber() && rhs.isNumber()) {
+    res.setNumber(lhs.toNumber() + rhs.toNumber());
+    return true;
+  }
+
+  JS_ReportErrorASCII(cx, "%s + %s is not allowed", InformalValueTypeName(lhs),
+                      InformalValueTypeName(rhs));
+  return false;
 }
 
 static MOZ_ALWAYS_INLINE bool SubOperation(JSContext* cx,
